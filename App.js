@@ -12,12 +12,12 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <StatusBar style="auto" />
       <ImageBackground source={require('./assets/splash.png')} style={styles.image}>
-        <Image  style={styles.tinyLogo} source={require("./assets/logo.png")} />
-        <Text numberOfLines={1} onPress={handlePress}>World’s Leading Startup Auction Platform </Text>
-        <StatusBar style="auto" />
-        <Text numberOfLines={1}>Find Your Next Company Here</Text>
-        <View style={styles.glass}>
+        <Image style={styles.tinyLogo} resizeMode={'cover'} source={require("./assets/logo.png")} />
+        <Text style={{fontSize:18}}numberOfLines={1} onPress={handlePress}>World’s Leading Startup Auction Platform </Text>
+        <Text numberOfLines={1} style={styles.subtext}>Find Your Next Company Here</Text>
+
         <View style={styles.loginGroup}>
           <Button
             style={styles.button}
@@ -27,18 +27,18 @@ export default function App() {
             accessibilityLabel="Login"
           />
         </View>
-          <View style={styles.loginGroup}>
+        <View style={styles.loginGroup}>
             <Button
             style={styles.button}
             onPress={handlePress}
             title="Sign Up"
             color="#4b74a8"
             accessibilityLabel="Sign Up"
-          />
+            />
         </View>
-        </View>
-      </ImageBackground>
-    </View>
+      
+    </ImageBackground>
+  </View>
   );
 }
 
@@ -46,28 +46,37 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     //backgroundColor: '#A89954',
-    alignItems: 'center',
-    justifyContent: 'center',
+     alignItems: 'center'
   },
   tinyLogo: {
+    flex:0,
+    width:200,
     paddingTop: 50,
+    marginBottom:50,
+    marginTop:100,
   },
   button: {
-    paddingVertical: 100,
-    flex: 1
+    //paddingVertical: 100,
+    marginBottom:30
+    
     
   },
   image: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: "center",
+    justifyContent: "space-between",
     width: 1000,
-    opacity:1,
   },
-  loginGroup:{
-    paddingTop:50
+  loginGroup:{ 
+    margin: 10,
+    paddingTop:0,
+    paddingBottom:0,
+    flex:1,
+    width:300
   },
-  glass:{
-    opacity:.9
+  subtext:{
+    marginBottom:200,
+    marginTop:80,
+    fontSize:20
   }
 });
