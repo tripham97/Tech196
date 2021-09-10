@@ -1,11 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Button, Text, View, Image, SafeAreaView, ImageBackground } from 'react-native';
-//import {BlurView} from '@react-native-community/blur';
-//import LinearGradient from 'react-native-linear-gradient';
+import { createStackNavigator } from '@react-navigation/stack'
+const Root = createStackNavigator()
 
-const image = { uri: 'https://www.tech196.com/front_side/images/mainbanner.jpg' };
-//view -> UIView
 export default function App() {
   console.log("App executed");
   const handlePress = () => console.log("Text pressed");
