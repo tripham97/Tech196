@@ -1,5 +1,5 @@
 import React from "react";
-import { SafeAreaView, StyleSheet, TextInput } from "react-native";
+import { SafeAreaView, View, Text, StyleSheet, TextInput } from "react-native";
 
 const RegisterForm = () => {
   const [text, onChangeText] = React.useState("Useless Text");
@@ -22,6 +22,15 @@ const RegisterForm = () => {
     </SafeAreaView>
   );
 };
+//placeholder function
+function RegisterScreen() {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Register Screen</Text>
+      <Text>This is where the details for your registration will be input</Text>
+    </View>
+  );
+}
 
 const styles = StyleSheet.create({
   input: {
@@ -32,4 +41,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default RegisterForm;
+export default RegisterScreen;

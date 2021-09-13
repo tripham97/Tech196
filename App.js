@@ -1,38 +1,29 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Register from './components/register.jsx'
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import LoginForm from './components/login.jsx'
 import PreLoginScreen from './components/prelogin.jsx';
-const Stack = createNativeStackNavigator();
-
-function RegisterScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Register Screen</Text>
-      <Text>This is where the details for your registration will be input</Text>
-    </View>
-  );
-}
-
-function LoginDetailsScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Login Details Screen</Text>
-    </View>
-  );
-}
-
+import RegisterScreen from './components/register.jsx';
+import HomeScreen from './components/home.jsx';
+const Drawer = createDrawerNavigator();
 export default function App() {
 
   return (
     <NavigationContainer>
+      <Drawer.Navigator initialRouteName="Home">
+        <Drawer.Screen name="Home" component={HomeScreen} />
+        <Drawer.Screen name="Login" component={LoginForm} />
+        <Drawer.Screen name="Register" component={RegisterScreen} />
+      </Drawer.Navigator>
+    </NavigationContainer>
+    /*{ <NavigationContainer>
       <Stack.Navigator initialRouteName="Login">
         <Stack.Screen name="Home" component={PreLoginScreen} />
-        <Stack.Screen name="Login Details" component={LoginDetailsScreen} />
-        <Stack.Screen name="Register" component={Register} />
+        <Stack.Screen name="Login Details" component={LoginForm} />
+        <Stack.Screen name="Register" component={RegisterScreen} />
       </Stack.Navigator>
-    </NavigationContainer>
+    </NavigationContainer> }*/
   );
 }
 

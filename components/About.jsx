@@ -3,8 +3,8 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, ImageBackground } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-function PreLoginScreen({ navigation }) {
-  console.log("PreLogin Loaded");
+function AboutUsScreen({ navigation }) {
+  console.log("About Us Loaded");
   const handlePress = () => console.log("Text pressed");
   return (
     
@@ -18,7 +18,7 @@ function PreLoginScreen({ navigation }) {
         <View style={styles.loginGroup}>
           <TouchableOpacity
             style={styles.btn}
-            onPress={() => navigation.navigate('Login')}
+            onPress={() => navigation.navigate('Login Details')}
             
           >
             <Text style={{fontSize:20}}>Login</Text>
@@ -79,4 +79,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default PreLoginScreen;
+export default AboutUsScreen;
