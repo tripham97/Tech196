@@ -8,10 +8,20 @@ import RegisterScreen from './components/register.jsx';
 import HomeScreen from './components/home.jsx';
 const Drawer = createDrawerNavigator();
 export default function App() {
-
+  
   return (
     <NavigationContainer>
-      <Drawer.Navigator initialRouteName="Home">
+      <Drawer.Navigator 
+      screenOptions={{
+      headerStyle: {
+    backgroundColor: 'transparent',
+    height: 100
+  },
+    drawerStyle: {
+      width: 240,
+    },
+  }}
+      initialRouteName="Home">
         <Drawer.Screen name="Home" component={HomeScreen} />
         <Drawer.Screen name="Login" component={LoginForm} />
         <Drawer.Screen name="Register" component={RegisterScreen} />
@@ -29,6 +39,7 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
+    marginTop:100,
     flex: 1,
     //backgroundColor: '#A89954',
      alignItems: 'center'
