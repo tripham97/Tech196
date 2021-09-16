@@ -10,12 +10,12 @@ const HomeScreen = () => {
 
     return (
         <SafeAreaView style={styles.container}>
-        <Image style={styles.tinyLogo} resizeMode={'cover'} source={require("../assets/logo.png")} />
             <ScrollView style={styles.scrollView}>
                 <ImageBackground source={require('../assets/splash.png')} style={styles.image}>
+                <Image style={styles.tinyLogo} source={require("../assets/logo.png")}/>
                     <Text style={{ color:'#404040',textAlign: 'center',fontSize:35,}}>World's Leading Startup Auction Platform
                     </Text>
-                    <Text style={{alignSelf:'center',fontSize:30,color:'black',marginTop:30,marginBottom:50}}>
+                    <Text style={{alignSelf:'center',fontSize:20,color:'black',marginTop:30,marginBottom:50}}>
                     Find Your Next <Text style={{color:'#4b74a8'}}>Company</Text> Here
                     </Text>
                     <Picker
@@ -57,7 +57,7 @@ const HomeScreen = () => {
                       onValueChange={(itemValue, itemIndex) =>
                         setCountry(itemValue)
                       }>
-                      <Picker.Item label="Select Country" value="" />
+                      <Picker.Item label="Select Country" style={{fontSize:20}} value="" />
                       <Picker.Item label="United States" value="US" />
                       <Picker.Item label="Upcoming Auction" value="upcoming" />
                     </Picker>
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     },
     tinyLogo: {
         flex:0,
-        alignSelf: 'flex-start',
+        alignSelf: 'center',
         marginBottom:20,
         marginLeft:15
       },
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     },
     image: {
         flex: 1,
-        height:600
+        height:1000
         //alignItems: 'center',
         //justifyContent: "space-between",
         //width: 1000,
