@@ -5,6 +5,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import LoginForm from './components/login.jsx'
 import PreLoginScreen from './components/prelogin.jsx';
 import RegisterScreen from './components/register.jsx';
+import AboutUsScreen from './components/About.jsx';
 import HomeScreen from './components/home.jsx';
 const Drawer = createDrawerNavigator();
 export default function App() {
@@ -24,7 +25,7 @@ export default function App() {
       initialRouteName="Home">
         <Drawer.Screen name="Home" component={HomeScreen} />
         <Drawer.Screen name="Login" component={LoginForm} />
-        <Drawer.Screen name="Register" component={RegisterScreen} />
+        <Drawer.Screen name="About" component={AboutUsScreen} />
       </Drawer.Navigator>
     </NavigationContainer>
     /*{ <NavigationContainer>
