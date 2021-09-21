@@ -1,46 +1,102 @@
 import React, {useState} from "react";
-import { FlatList, View, Container,Text, StyleSheet} from "react-native";
+import { FlatList,Button, View, Container,Text, StyleSheet} from "react-native";
 import { SearchBar } from 'react-native-elements';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { ScrollView } from "react-native-gesture-handler";
+const ItemSeparator = () => {
 
-export default class BidScreen extends React.Component {
-  state = {
-    search: '',
-  };
+  return (
+    <View
+          style={{
+            height: .5,
+            width: "100%",
+            backgroundColor: "#000",
+          }}
+        />
+  );
+};
+//GET RID OF HEADER TEXT ON NAVIGATionS
+function DetailsScreen({ route, navigation }) {
+  /* 2. Get the param */
+  const { itemId, otherParam } = route.params;
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Details Screen</Text>
+      <Text>itemId: {JSON.stringify(itemId)}</Text>
+      <Text>otherParam: {JSON.stringify(otherParam)}</Text>
+      <Button
+        title="Go to Details... again"
+        onPress={() =>
+          navigation.push('Details', {
+            itemId: Math.floor(Math.random() * 100),
+          })
+        }
+      />
+      <Button title="Go to Home" onPress={() => navigation.navigate('BidScreen')} />
+      <Button title="Go back" onPress={() => navigation.goBack()} />
+    </View>
+  );
+}
+function CompanyList({navigation}){
+  const [search, setSearch] = useState('');
 
-  updateSearch = (search) => {
-    this.setState({ search });
-  };
-
-  render() {
-    const { search } = this.state;
-
-    return (
-      <View>
+  return (<ScrollView>
       <SearchBar
         placeholder="Type Here..."
-        onChangeText={this.updateSearch}
+        onChangeText={setSearch}
         value={search}
       />
       <FlatList
         data={[
-          {key: 'Devin'},
-          {key: 'Dan'},
-          {key: 'Dominic'},
-          {key: 'Jackson'},
-          {key: 'James'},
-          {key: 'Joel'},
-          {key: 'John'},
-          {key: 'Jillian'},
-          {key: 'Jimmy'},
-          {key: 'Julie'},
+          {key: 'Amazon'},
+          {key: 'Google'},
+          {key: 'Facebook'},
+          {key: 'Netflix'},
+          {key: 'Company 5'},
+          {key: 'Company 6'},
+          {key: 'Company 7'},
+          {key: 'Company 8'},
+          {key: 'Company 9'},
+          {key: 'Company 10'},
         ]}
-        renderItem={({item}) => <Text style={styles.item}>{item.key}</Text>}
+
+        renderItem={({item}) => <Text style={styles.item} onPress={() => {navigation.navigate('Details', {data: item})}}>{item.key}</Text>}
+        separator={ItemSeparator}
       />
-      </View>
-    );
-  }
+      </ScrollView>);
 }
 
+const Stack = createNativeStackNavigator();
+
+function BidScreen({ navigation }) {
+  return (
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Home"
+          component={CompanyList}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen name="Details" component={DetailsScreen} />
+        
+      </Stack.Navigator>);
+}
+
+function CompanyDetails()
+{
+  navigationOptions =
+  {
+     title: 'Company Details',
+  };
+ 
+  return(
+    <View style = { styles.MainContainer }>
+
+        <Text style = { styles.TextStyle }> { this.props.navigation.state.params.ListViewClickItemHolder } </Text>
+
+    </View>
+  );
+}
 
 const styles = StyleSheet.create({
     container: {
@@ -98,5 +154,21 @@ const styles = StyleSheet.create({
       maxWidth: 500,
       minWidth:300,
       alignSelf: "center"
-    }
+    },
+    separator: {
+      height: StyleSheet.hairlineWidth,
+    },
+    item: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      fontSize: 50,
+      padding: 8,
+    },
+    MainContainer:
+    {
+     justifyContent: 'center',
+     flex:1,
+     margin: 10
+    },
   });
+ export default BidScreen;
