@@ -1,40 +1,50 @@
 import React from 'react';
-import { StyleSheet} from 'react-native';
+import { StyleSheet,View} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import LoginForm from './components/login.jsx'
-import PreLoginScreen from './components/prelogin.jsx';
-import RegisterScreen from './components/register.jsx';
-import AboutUsScreen from './components/About.jsx';
-import HomeScreen from './components/home.jsx';
-const Drawer = createDrawerNavigator();
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Ionicons from '@expo/vector-icons/Ionicons';//packages
+
+import BidScreen from './components/bid.jsx';
+import HomeScreen from './components/home.jsx';//screen components
+
+
 export default function App() {
-  
+  const Tab = createBottomTabNavigator();
   return (
     <NavigationContainer>
-      <Drawer.Navigator 
-      screenOptions={{
-      headerStyle: {
-    backgroundColor: 'transparent',
-    height: 100
-  },
-    drawerStyle: {
-      width: 240,
-    },
-  }}
-      initialRouteName="Home">
-        <Drawer.Screen name="Home" component={HomeScreen} />
-        <Drawer.Screen name="Login" component={LoginForm} />
-        <Drawer.Screen name="About" component={AboutUsScreen} />
-      </Drawer.Navigator>
+      <Tab.Navigator screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconName;
+
+            if (route.name === 'Bid') {
+              iconName = focused
+                ? 'cart'
+                : 'cart-outline';
+            } else if (route.name === 'Sell') {
+              iconName = focused ? 'pricetag' : 'pricetag-outline';
+            } else if (route.name === 'Search') {
+              iconName = focused ? 'search' : 'search-outline';
+            } else if (route.name === 'Notifications') {
+              iconName = focused ? 'notifications' : 'notifications-outline';
+            } else if (route.name === 'Profile') {
+              iconName = focused ? 'person-circle' : 'person-circle-outline';
+            }
+
+            // You can return any component that you like here!
+            return <Ionicons name={iconName} size={size} color={color} />;
+          },
+          tabBarActiveTintColor: '#57b8ff',
+          tabBarInactiveTintColor: 'gray',
+        })}>
+        <Tab.Screen name="Bid" component={BidScreen} />
+        <Tab.Screen name="Sell" component={HomeScreen} />
+
+        <Tab.Screen name="Search" component={HomeScreen} />
+
+        <Tab.Screen name="Notifications" component={HomeScreen} />
+        <Tab.Screen name="Profile" component={HomeScreen} />
+      </Tab.Navigator>
     </NavigationContainer>
-    /*{ <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
-        <Stack.Screen name="Home" component={PreLoginScreen} />
-        <Stack.Screen name="Login Details" component={LoginForm} />
-        <Stack.Screen name="Register" component={RegisterScreen} />
-      </Stack.Navigator>
-    </NavigationContainer> }*/
   );
 }
 
