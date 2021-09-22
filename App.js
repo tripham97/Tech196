@@ -6,13 +6,16 @@ import Ionicons from '@expo/vector-icons/Ionicons';//packages
 
 import BidScreen from './components/bid.jsx';
 import HomeScreen from './components/home.jsx';//screen components
-
+import SearchScreen from './components/search.jsx';
+import SellScreen from './components/sell.jsx';
+import NotificationScreen from './components/notification.jsx';
 
 export default function App() {
   const Tab = createBottomTabNavigator();
   return (
     <NavigationContainer>
       <Tab.Navigator screenOptions={({ route }) => ({
+          
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
 
@@ -36,12 +39,13 @@ export default function App() {
           tabBarActiveTintColor: '#57b8ff',
           tabBarInactiveTintColor: 'gray',
         })}>
+
         <Tab.Screen name="Bid" component={BidScreen} />
-        <Tab.Screen name="Sell" component={HomeScreen} />
+        <Tab.Screen name="Sell" component={SellScreen} />
 
-        <Tab.Screen name="Search" component={HomeScreen} />
+        <Tab.Screen name="Search" component={SearchScreen} />
 
-        <Tab.Screen name="Notifications" component={HomeScreen} />
+        <Tab.Screen name="Notifications" component={NotificationScreen} />
         <Tab.Screen name="Profile" component={HomeScreen} />
       </Tab.Navigator>
     </NavigationContainer>

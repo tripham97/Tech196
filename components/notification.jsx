@@ -1,17 +1,12 @@
 import React, {useState} from "react";
 import { View, Container,Text, StyleSheet} from "react-native";
-import { TextInput } from "react-native-gesture-handler";
 
 
-function SellScreen() {
+function NotificationScreen() {
 
     return (
       <View>
-        <Text style={styles.text}>Want to sell?</Text>
-        <Text>Contact us for more info.</Text>
-        <TextInput>Name</TextInput>
-        <TextInput>Email</TextInput>
-        <TextInput>Phone</TextInput>
+        <Text>Bidding</Text>
       </View>
   );
 };
@@ -75,4 +70,4 @@ const styles = StyleSheet.create({
     }
   });
 
-export default SellScreen;
+export default NotificationScreen;

@@ -77,7 +77,7 @@ function BidScreen({ navigation }) {
           component={CompanyList}
           options={{ headerShown: false }}
         />
-        <Stack.Screen name="Details" component={DetailsScreen} />
+        <Stack.Screen name="Details" component={DetailsScreen} options={{ headerShown: false }} />
         
       </Stack.Navigator>);
 }
