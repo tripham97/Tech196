@@ -9,7 +9,7 @@ import HomeScreen from './components/home.jsx';//screen components
 import SearchScreen from './components/search.jsx';
 import SellScreen from './components/sell.jsx';
 import NotificationScreen from './components/notification.jsx';
-
+import Profile from './components/profileA'
 export default function App() {
   const Tab = createBottomTabNavigator();
   return (
@@ -40,13 +40,13 @@ export default function App() {
           tabBarInactiveTintColor: 'gray',
         })}>
 
-        <Tab.Screen name="Bid" component={BidScreen} />
+        <Tab.Screen name="Bid" component={BidScreen}/>
         <Tab.Screen name="Sell" component={SellScreen} />
 
         <Tab.Screen name="Search" component={SearchScreen} />
 
         <Tab.Screen name="Notifications" component={NotificationScreen} />
-        <Tab.Screen name="Profile" component={HomeScreen} />
+        <Tab.Screen name="Profile" component={Profile} />
       </Tab.Navigator>
     </NavigationContainer>
   );

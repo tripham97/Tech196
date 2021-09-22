@@ -1,12 +1,17 @@
 import React, {useState} from "react";
 import { View, Container,Text, StyleSheet} from "react-native";
-
+import { SearchBar } from 'react-native-elements';
 
 function SearchScreen() {
+  const [search, setSearch] = useState('');
 
     return (
-      <View>
-        <Text>Bidding</Text>
+      <View style={styles.container}>
+        <SearchBar
+        placeholder="Type Here..."
+        onChangeText={setSearch}
+        value={search}
+      />
       </View>
   );
 };

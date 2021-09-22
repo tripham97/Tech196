@@ -1,9 +1,21 @@
 import React, {useState} from "react";
-import { FlatList,Button, View, Container,Text, StyleSheet} from "react-native";
-import { SearchBar } from 'react-native-elements';
-import { NavigationContainer } from '@react-navigation/native';
+import { FlatList,Button,Image, View, SafeAreaView, StyleSheet} from "react-native";
+import { Card, ListItem, Icon,Text } from 'react-native-elements'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { ScrollView } from "react-native-gesture-handler";
+import { height } from "styled-system";
+
+const users = [
+  {
+     name: 'brynn',
+     avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg'
+  },
+  {
+    name: 'Google',
+    avatar: 'https://symbols.getvecta.com/stencil_82/45_google-icon.d8d982f8a1.svg'
+  }
+ ];
+
+
 const ItemSeparator = () => {
 
   return (
@@ -38,15 +50,29 @@ function DetailsScreen({ route, navigation }) {
     </View>
   );
 }
-function CompanyList({navigation}){
-  const [search, setSearch] = useState('');
 
-  return (<ScrollView>
-      <SearchBar
-        placeholder="Type Here..."
-        onChangeText={setSearch}
-        value={search}
-      />
+function CompanyCard(props) {
+  return (<Card containerStyle={{backgroundColor:'grey'}}>
+    <Card.Title style={{fontSize:25,color:'white'}}>{props.name}</Card.Title>
+    <Card.Divider/>
+    <Image source={require('../assets/techlogo.png')} style={{backgroundColor:'grey',resizeMode:'contain',width:'100%',height:75}}/>
+    <Card.Image style={{backgroundColor:'grey'}}>
+      <Text style={{color:'white',marginBottom: 10,marginTop:30}}>
+        An innovative startup in medical technology based out of SugarLand,Texas. Top Startups in Texas.
+      </Text>
+      <Button
+        icon={<Icon name='code' color='red' />}
+        buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+        title='BID NOW' />
+    </Card.Image>
+  </Card>);
+}
+
+function CompanyList({navigation}){
+  
+  return (<SafeAreaView>
+      <Text h3 style={{marginTop:10,textAlign:'center'}}>Current Offerings</Text>
+
       <FlatList
         data={[
           {key: 'Amazon'},
@@ -60,11 +86,11 @@ function CompanyList({navigation}){
           {key: 'Company 9'},
           {key: 'Company 10'},
         ]}
-
-        renderItem={({item}) => <Text style={styles.item} onPress={() => {navigation.navigate('Details', {data: item})}}>{item.key}</Text>}
+        
+        renderItem={({item}) => <CompanyCard name={item.key} image={'https://symbols.getvecta.com/stencil_82/45_google-icon.d8d982f8a1.svg'}/>}
         separator={ItemSeparator}
       />
-      </ScrollView>);
+      </SafeAreaView>);
 }
 
 const Stack = createNativeStackNavigator();
@@ -82,26 +108,10 @@ function BidScreen({ navigation }) {
       </Stack.Navigator>);
 }
 
-function CompanyDetails()
-{
-  navigationOptions =
-  {
-     title: 'Company Details',
-  };
- 
-  return(
-    <View style = { styles.MainContainer }>
-
-        <Text style = { styles.TextStyle }> { this.props.navigation.state.params.ListViewClickItemHolder } </Text>
-
-    </View>
-  );
-}
-
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#efeff0',
+      backgroundColor: 'blue',
     },
     tinyLogo: {
         flex:0,
@@ -130,17 +140,6 @@ const styles = StyleSheet.create({
       borderWidth: 1,
       backgroundColor:'white',
       padding: 10,  
-      borderColor:'#4b74a8',
-      maxWidth: 500,
-      minWidth:300,
-      alignSelf:'center'
-    },
-    textIn:{
-      height: 40,
-      margin: 12,
-      borderWidth: 1,
-      padding: 10,
-      backgroundColor:'white',
       borderColor:'#4b74a8',
       maxWidth: 500,
       minWidth:300,

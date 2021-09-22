@@ -1,19 +1,32 @@
 import React, {useState} from "react";
-import { View, Container,Text, StyleSheet} from "react-native";
+import { View, Image,Text, StyleSheet} from "react-native";
 import { TextInput } from "react-native-gesture-handler";
+import { Input,Icon,Button } from 'react-native-elements';
 
 
 function SellScreen() {
 
     return (
-      <View>
-        <Text style={styles.text}>Want to sell?</Text>
-        <Text>Contact us for more info.</Text>
-        <TextInput>Name</TextInput>
-        <TextInput>Email</TextInput>
-        <TextInput>Phone</TextInput>
+      <View style={{backgroundColor:'#f5f5f5',flex:1}}>
+        <View style={{marginHorizontal:10}}>
+          <Image source={require('../assets/techlogo.png')} style={{backgroundColor:'#f5f5f5',resizeMode:'contain',width:'100%',height:75,marginTop:15}}/>
+          <Text style={styles.text}>Want to sell?</Text>
+          <Text style={{marginBottom:50,fontSize:25}}>Contact us for more info.</Text>
+          <Input
+            placeholder='Name'
+          /><Input
+            placeholder='Email'
+          /><Input
+            inputStyle={{'color':'red'}}
+            placeholder='Phone Number'
+          /><Input
+            placeholder='Company Website'
+          /><Input
+            placeholder='Notes'
+          /><Button title='Contact Us' />
+        </View>
       </View>
-  );
+          );
 };
 
 const styles = StyleSheet.create({
@@ -32,7 +45,7 @@ const styles = StyleSheet.create({
       marginHorizontal: 0,
     },
     text: {
-      alignSelf: 'center',
+      alignSelf: 'flex-start',
       fontSize: 42
     },
     image: {
