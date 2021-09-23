@@ -1,9 +1,7 @@
 import React, {useState} from "react";
 import { useScrollToTop, useTheme } from '@react-navigation/native';
 import { View, Container,Text, StyleSheet,FlatList} from "react-native";
-import { Button } from "react-native-elements";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import LinearGradient from 'react-native-linear-gradient';
 
 const CONTACTS = [
   { type: 'No longer highest bidder', msg: 'You have been outbid on Google, make sure you rebid if you would like to acquire this company.', read: false },
