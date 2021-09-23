@@ -3,9 +3,7 @@ import { StyleSheet,View} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from '@expo/vector-icons/Ionicons';//packages
-
 import BidScreen from './components/bid.jsx';
-import HomeScreen from './components/home.jsx';//screen components
 import SearchScreen from './components/search.jsx';
 import SellScreen from './components/sell.jsx';
 import NotificationScreen from './components/notification.jsx';
