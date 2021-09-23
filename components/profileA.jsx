@@ -1,6 +1,6 @@
 import { Row } from "native-base";
 import React, {useState} from "react";
-import { View, Container, StyleSheet,Image, PixelRatio} from "react-native";
+import { View, Container, StyleSheet,Image, PixelRatio, Pressable, ScrollView} from "react-native";
 import { Input,Icon,Button,Text } from 'react-native-elements';
 import Ionicons from '@expo/vector-icons/Ionicons';//packages
 
@@ -8,31 +8,42 @@ function ProfileCard(){
   return (
     <View style={{flexDirection:'row'}}>
         <View>
-          <Text h1 style={{}}>Profile</Text>
           <Text h4 style={{}}>@InvestorHandle</Text>
+          <Pressable>
+            {({ pressed }) => (
+              <Text h4>
+                {pressed ? "It's Tri Pham" : "Profile's Name"}
+              </Text>
+            )}
+          </Pressable>
         </View>
-        <View style={{marginLeft:60}}>
+        <View style={{marginLeft:50}}>
           <Ionicons name={'person-circle'} size={175} color={'grey'} />
         </View>
         
         
-      </View>
+    </View>
   );
 }
 
 function ProfileScreen() {
-
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <ProfileCard />
-        <View><Text h3 >Funds Available</Text>
-        <Text h3 >$10,000</Text></View>
-        <View style={{flexDirection:'row'}}><Button title='Deposit' />
-        <Button title='Withdraw'/></View>
+        <View>
+          <Text h3 >Funds Available</Text>
+          <Text h3 >$10,000</Text>
+        </View>
+        <View>
+          <Button title='Deposit'/>
+        </View>
+        <View>
+          <Button title='Withdraw' style={{marginTop:10}}/>
+        </View>
 
-        <Text h3 style={{marginTop:20}}>Portfolio</Text>
-        <Image source={require('../assets/pie.png')} resizeMode={'contain'} style={{width:'100%',height:400}}/>
-      </View>
+          <Text h3 style={{marginTop:20}}>Portfolio</Text>
+          <Image source={require('../assets/pie.png')} resizeMode={'contain'} style={{width:'100%',height:400}}/>
+      </ScrollView>
   );
 };
 
